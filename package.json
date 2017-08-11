@@ -1,0 +1,17 @@
+{
+  "name": "youtrack-workflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "youtrack-workflow": "./bin/youtrack-workflow"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "1.2.0"
+  },
+  "scripts": {
+    "bin": "./bin/youtrack-workflow"
+  }
+}
