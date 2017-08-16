@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "archiver": "2.0.0",
     "minimist": "1.2.0"
   },
   "scripts": {
