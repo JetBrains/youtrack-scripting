@@ -1,0 +1,68 @@
+{
+  "parserOptions": {},
+  "plugins": [],
+  "ecmaFeatures": {
+    "arrowFunctions": true
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "it": false,
+    "describe": false,
+    "beforeAll": false,
+    "afterAll": false,
+    "beforeEach": false,
+    "afterEach": false
+  },
+  "rules": {
+    "no-spaced-func": 2,
+    "space-before-function-paren": [2, "never"],
+    "space-in-parens": [2, "never"],
+    "space-infix-ops": 2,
+    "keyword-spacing": ["error"],
+    "one-var": [2, "never"],
+    "semi-spacing": [2, {before: false, after: true}],
+    "semi": [2, "always"],
+    "camelcase": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "indent": [2, 2, {
+      "SwitchCase": 1
+    }],
+    "new-cap": 0,
+    "new-parens": 2,
+    "quotes": [2, "single"],
+
+    "no-unreachable": 2,
+    "no-extra-boolean-cast": 2,
+    "comma-dangle": [2, "never"],
+    "valid-jsdoc": [2, {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+    }],
+
+    "no-lonely-if": 2,
+    "no-bitwise": 2,
+    "no-div-regex": 2,
+    "curly": 0,
+    "eqeqeq": 2,
+    "yoda": 2,
+    "wrap-iife": [2, "outside"],
+    "no-caller": 2,
+
+    "no-dupe-args": 2,
+    "no-debugger": 2,
+    "no-console": 0,
+    "no-shadow-restricted-names": 2,
+    "no-label-var": 2,
+    "no-delete-var": 2,
+    "no-use-before-define": [2, "nofunc"],
+    "no-undef": 2,
+    "no-unused-vars": 2,
+    "no-undef-init": 2,
+
+    "handle-callback-err": 2
+  }
+}

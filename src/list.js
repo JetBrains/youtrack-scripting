@@ -13,7 +13,7 @@ module.exports = function(config) {
     if (!error) {
       data.forEach((x) => {
         print(x.name);
-      })
+      });
     } else {
       throw error;
     }
