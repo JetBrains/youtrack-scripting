@@ -16,5 +16,34 @@ module.exports.run = function() {
     case 'upload':
       require('./src/upload')(config, args._.pop());
       return;
+    default:
+      printHelp();
+      return;
+  }
+
+  function printHelp() {
+    br();
+    printTitle('Commands');
+    printLine('list      ', 'List of installed workflows');
+    printLine('download  ', 'Download a workflow');
+    printLine('upload    ', 'Upload workflow to the server');
+    br();
+    printTitle('Options');
+    printLine('--host    ', 'YouTrack host');
+    printLine('--token   ', 'Authorization token');
+    br();
+    br();
+
+    function printTitle(title) {
+      console.log('  ' + title + ':');
+    }
+
+    function br() {
+      console.log('');
+    }
+
+    function printLine(option, description) {
+      console.log('    ' + option + '   ' + description);
+    }
   }
 };
