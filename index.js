@@ -14,7 +14,7 @@ module.exports.run = function() {
       require('./src/download')(config, args._.pop());
       return;
     case 'upload':
-      require('./src/upload')(config, args._.pop(), args);
+      require('./src/upload')(config, args._.pop());
       return;
   }
 };
