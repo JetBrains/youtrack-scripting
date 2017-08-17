@@ -1,8 +1,9 @@
 module.exports.run = function() {
-  var args = require('./lib/cli/parseargv')(process.argv);
-  var config = {
+  const args = require('./lib/cli/parseargv')(process.argv);
+  const config = {
     host: args.host || null,
     token: args.token || null,
+    output: args.output || null,
     cwd: process.cwd()
   };
 
@@ -31,6 +32,7 @@ module.exports.run = function() {
     printTitle('Options');
     printLine('--host    ', 'YouTrack host');
     printLine('--token   ', 'Authorization token');
+    printLine('--output   ', 'Target folder');
     br();
     br();
 

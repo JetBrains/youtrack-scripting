@@ -1,7 +1,8 @@
 const fs = require('fs');
 const resolve = require('url').resolve;
 const net = require('../lib/net/index');
-const tmpdir = require('../lib/fs/tmpdir');
+const outputdir = require('../lib/fs/outputdir');
+const unzip = require('../lib/unzip/unzip');
 
 const load = require('../src/load');
 
@@ -39,8 +40,11 @@ function download(config, workflowName) {
     );
 
     req.on('response', reponse => {
-      const zip = fs.createWriteStream(tmpdir(getZipName(workflowName)));
+      const fileName = getZipName(workflowName);
+      const filePath = outputdir(config.output, fileName);
+      const zip = fs.createWriteStream(filePath);
       reponse.pipe(zip);
+      unzip(config, filePath)
     });
 
     return req;
