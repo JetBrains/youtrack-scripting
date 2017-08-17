@@ -1,6 +1,6 @@
 {
-  "name": "youtrack-scripting",
-  "version": "1.0.0",
+  "name": "@jetbrains/youtrack-scripting",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
