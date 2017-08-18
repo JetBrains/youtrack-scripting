@@ -1,4 +1,5 @@
 const fs = require('fs');
+const exit = require('../lib/cli/exit');
 const resolve = require('url').resolve;
 const tmpdir = require('../lib/fs/tmpdir');
 const unzip = require('../lib/fs/unzip');
@@ -7,7 +8,8 @@ const HttpMessage = require('../lib/net/httpmessage');
 
 function download(config, workflowName) {
   if (!workflowName) {
-    throw new Error('Workflow name should be defined');
+    exit(new Error('Workflow name should be defined'));
+    return;
   }
 
   var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName));
@@ -16,7 +18,7 @@ function download(config, workflowName) {
 
   const req = request(message,
     (downloadError) => {
-      if (downloadError) throw downloadError;
+      if (downloadError) exit(downloadError);
     }
   );
 

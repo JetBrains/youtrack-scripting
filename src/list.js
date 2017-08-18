@@ -1,4 +1,5 @@
 const resolve = require('url').resolve;
+const exit = require('../lib/cli/exit');
 const request = require('../lib/net/request');
 const queryfields = require('../lib/net/queryfields');
 const HttpMessage = require('../lib/net/httpmessage');
@@ -10,9 +11,8 @@ module.exports = function(config) {
   message.query.fields = queryfields(['id', 'name']);
 
   return request(message, (error, data) => {
-    if (error) {
-      throw error;
-    }
+    if (error) return exit(error);
+
     data.forEach((x) => {
       print(x.name);
     });

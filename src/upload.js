@@ -1,18 +1,19 @@
-var resolve = require('url').resolve;
-var path = require('path');
-var sign = require('../lib/net/index').sign;
-var fileupload = require('../lib/net/fileupload');
-var zipfolder = require('../lib/fs/zipfolder');
-var tmpdir = require('../lib/fs/tmpdir');
+const resolve = require('url').resolve;
+const path = require('path');
+const exit = require('../lib/cli/exit');
+const sign = require('../lib/net/index').sign;
+const fileupload = require('../lib/net/fileupload');
+const zipfolder = require('../lib/fs/zipfolder');
+const tmpdir = require('../lib/fs/tmpdir');
 
 module.exports = function(config, workflowDir) {
   var zipPath = tmpdir(generateZipName(workflowDir));
 
   zipfolder(path.resolve(config.cwd, workflowDir), zipPath, (error, zip) => {
-    if (error) throw error;
+    if (error) return exit(error);
 
     return fileupload(sign(resolve(config.host, '/api/admin/workflows/import'), config.token), zip.path, (error) => {
-      if (error) throw error;
+      if (error) return exit(error);
     });
   });
 
