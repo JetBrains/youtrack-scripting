@@ -12,7 +12,7 @@ function download(config, workflowName) {
     return;
   }
 
-  var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName));
+  var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName.replace(/^@/, '')));
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.headers['Accept'] = 'application/zip';
 
