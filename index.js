@@ -17,6 +17,10 @@ module.exports.run = function() {
     case 'upload':
       require('./src/upload')(config, args._.pop());
       return;
+    case 'version':
+    case 'v':
+      console.log(require('./package.json').version);
+      return;
     default:
       printHelp();
       return;
