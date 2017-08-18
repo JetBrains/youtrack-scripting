@@ -24,16 +24,17 @@ function download(config, workflowName) {
 
   req.on('response', reponse => {
     const zip = fs.createWriteStream(tmpdir(getZipName(workflowName)));
+    const output = config.output || config.cwd;
 
     reponse.pipe(zip).on('close', () => {
-      unzip(zip.path, config.output);
+      unzip(zip.path, require('path').resolve(output, workflowName));
     });
   });
 
   return req;
 
   function getZipName(workflowName) {
-    return 'youtrack-workflow-' + workflowName + '.zip';
+    return 'youtrack-workflow-' + workflowName.split('/').pop() + '.zip';
   }
 }
 
