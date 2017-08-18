@@ -24,21 +24,10 @@ module.exports.run = function() {
 
   function printHelp() {
     br();
-    printTitle('Commands');
-    printLine('list      ', 'List of installed workflows');
-    printLine('download  ', 'Download a workflow');
-    printLine('upload    ', 'Upload workflow to the server');
+    printLine('list     --host [--token]     ', 'List of installed workflows');
+    printLine('download <workflow> [--output]', 'Download a workflow');
+    printLine('upload   <directory>          ', 'Upload workflow to the server');
     br();
-    printTitle('Options');
-    printLine('--host    ', 'YouTrack host');
-    printLine('--token   ', 'Authorization token');
-    printLine('--output   ', 'Target folder');
-    br();
-    br();
-
-    function printTitle(title) {
-      console.log('  ' + title + ':');
-    }
 
     function br() {
       console.log('');
