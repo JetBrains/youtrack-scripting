@@ -1,7 +1,7 @@
 const fs = require('fs');
 const resolve = require('url').resolve;
 const tmpdir = require('../lib/fs/tmpdir');
-const unzip = require('../lib/unzip/unzip');
+const unzip = require('../lib/fs/unzip');
 const request = require('../lib/net/request');
 const HttpMessage = require('../lib/net/httpmessage');
 
