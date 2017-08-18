@@ -1,14 +1,15 @@
 const resolve = require('url').resolve;
-const net = require('../lib/net/index');
-
-const request = net.request;
-const sign = net.sign;
-const addFields = net.addFields;
+const request = require('../lib/net/request');
+const queryfields = require('../lib/net/queryfields');
+const HttpMessage = require('../lib/net/httpmessage');
 
 module.exports = function(config) {
-  const url = resolve(config.host, '/api/admin/workflows');
+  var message = new HttpMessage(resolve(config.host, '/api/admin/workflows'));
+  message = config.token ? HttpMessage.sign(message, config.token) : message;
+  message.query = message.query || {};
+  message.query.fields = queryfields(['id', 'name']);
 
-  return request(sign(addFields(url, ['id', 'name']), config.token), (error, data) => {
+  return request(message, (error, data) => {
     if (error) {
       throw error;
     }
