@@ -7,6 +7,10 @@ module.exports.run = function() {
     cwd: process.cwd()
   };
 
+  if (args.version || args.v) {
+    return printVersion();
+  }
+
   switch (args._[0]) {
     case 'list':
       require('./src/list')(config);
@@ -18,8 +22,7 @@ module.exports.run = function() {
       require('./src/upload')(config, args._.pop());
       return;
     case 'version':
-    case 'v':
-      console.log(require('./package.json').version);
+      printVersion();
       return;
     default:
       printHelp();
@@ -40,5 +43,9 @@ module.exports.run = function() {
     function printLine(option, description) {
       console.log('    ' + option + '   ' + description);
     }
+  }
+
+  function printVersion() {
+    console.log(require('./package.json').version);
   }
 };
