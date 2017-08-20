@@ -48,7 +48,7 @@ module.exports.run = function() {
 
     required.forEach((param) => {
       if (args.hasOwnProperty(param)) return;
-      exit(new Error('Param "--' + param + '" is required'));
+      exit(new Error('Option "--' + param + '" is required'));
     });
 
     return fn();
