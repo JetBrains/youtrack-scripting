@@ -1,6 +1,6 @@
 const fs = require('fs');
 const exit = require('../lib/cli/exit');
-const resolve = require('url').resolve;
+const resolve = require('../lib/net/resolve');
 const tmpdir = require('../lib/fs/tmpdir');
 const unzip = require('../lib/fs/unzip');
 const request = require('../lib/net/request');

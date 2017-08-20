@@ -1,4 +1,4 @@
-const resolve = require('url').resolve;
+const resolve = require('../lib/net/resolve');
 const exit = require('../lib/cli/exit');
 const request = require('../lib/net/request');
 const queryfields = require('../lib/net/queryfields');

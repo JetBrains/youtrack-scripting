@@ -1,4 +1,4 @@
-const resolve = require('url').resolve;
+const resolve = require('../lib/net/resolve');
 const path = require('path');
 const exit = require('../lib/cli/exit');
 const fileupload = require('../lib/net/fileupload');
