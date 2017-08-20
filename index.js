@@ -13,13 +13,11 @@ module.exports.run = function() {
 
   switch (args._[0]) {
     case 'list':
-      require('./src/list')(config);
-      return;
     case 'download':
-      require('./src/download')(config, args._.pop());
-      return;
     case 'upload':
-      require('./src/upload')(config, args._.pop());
+      checkRequiredParams(['host'], args, () => {
+        require('./src/' + args._[0])(config, args._.pop());
+      });
       return;
     case 'version':
       printVersion();
@@ -43,6 +41,17 @@ module.exports.run = function() {
     function printLine(option, description) {
       console.log('    ' + option + '   ' + description);
     }
+  }
+
+  function checkRequiredParams(required, args, fn) {
+    var exit = require('./lib/cli/exit');
+
+    required.forEach((param) => {
+      if (args.hasOwnProperty(param)) return;
+      exit(new Error('Param "--' + param + '" is required'));
+    });
+
+    return fn();
   }
 
   function printVersion() {
