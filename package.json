@@ -2,7 +2,7 @@
   "name": "@jetbrains/youtrack-scripting",
   "version": "0.0.13",
   "description": "",
-  "main": "index.js",
+  "main": "src/cli/index.js",
   "bin": {
     "youtrack-workflow": "./bin/youtrack-workflow"
   },

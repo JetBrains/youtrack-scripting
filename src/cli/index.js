@@ -1,5 +1,5 @@
 module.exports.run = function() {
-  const args = require('./lib/cli/parseargv')(process.argv);
+  const args = require('../../lib/cli/parseargv')(process.argv);
   const config = {
     host: args.host || null,
     token: args.token || null,
@@ -16,7 +16,7 @@ module.exports.run = function() {
     case 'download':
     case 'upload':
       checkRequiredParams(['host'], args, () => {
-        require('./src/cli/' + args._[0])(config, args._.pop());
+        require('./' + args._[0])(config, args._.pop());
       });
       return;
     case 'version':
@@ -44,7 +44,7 @@ module.exports.run = function() {
   }
 
   function checkRequiredParams(required, args, fn) {
-    var exit = require('./lib/cli/exit');
+    var exit = require('../../lib/cli/exit');
 
     required.forEach((param) => {
       if (args.hasOwnProperty(param)) return;
@@ -55,6 +55,6 @@ module.exports.run = function() {
   }
 
   function printVersion() {
-    console.log(require('./package.json').version);
+    console.log(require('../../package.json').version);
   }
 };
