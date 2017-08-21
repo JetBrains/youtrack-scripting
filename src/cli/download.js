@@ -28,7 +28,11 @@ function download(config, workflowName) {
     const output = config.output || config.cwd;
 
     reponse.pipe(zip).on('close', () => {
-      unzip(zip.path, require('path').resolve(output, workflowName));
+      unzip(zip.path, require('path').resolve(output, workflowName), (error) => {
+        if (error) return exit(error);
+
+        console.log(i18n(`File extracted into '${output}'`));
+      });
     });
   });
 
