@@ -31,6 +31,8 @@ module.exports = function(config, workflowDir) {
 
     var req = request(message, (error) => {
       if (error) return exit(error);
+
+      console.log('Workflow "' + workflowName + '" is uploaded');
     });
 
     req.write(content);
