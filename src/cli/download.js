@@ -1,10 +1,10 @@
 const fs = require('fs');
-const exit = require('../lib/cli/exit');
-const resolve = require('../lib/net/resolve');
-const tmpdir = require('../lib/fs/tmpdir');
-const unzip = require('../lib/fs/unzip');
-const request = require('../lib/net/request');
-const HttpMessage = require('../lib/net/httpmessage');
+const exit = require('../../lib/cli/exit');
+const resolve = require('../../lib/net/resolve');
+const tmpdir = require('../../lib/fs/tmpdir');
+const unzip = require('../../lib/fs/unzip');
+const request = require('../../lib/net/request');
+const HttpMessage = require('../../lib/net/httpmessage');
 
 function download(config, workflowName) {
   if (!workflowName) {

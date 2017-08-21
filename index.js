@@ -16,7 +16,7 @@ module.exports.run = function() {
     case 'download':
     case 'upload':
       checkRequiredParams(['host'], args, () => {
-        require('./src/' + args._[0])(config, args._.pop());
+        require('./src/cli/' + args._[0])(config, args._.pop());
       });
       return;
     case 'version':

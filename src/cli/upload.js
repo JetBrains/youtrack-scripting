@@ -1,11 +1,11 @@
-const resolve = require('../lib/net/resolve');
+const resolve = require('../../lib/net/resolve');
 const fs = require('fs');
 const path = require('path');
-const exit = require('../lib/cli/exit');
-const request = require('../lib/net/request');
-const zipfolder = require('../lib/fs/zipfolder');
-const tmpdir = require('../lib/fs/tmpdir');
-const HttpMessage = require('../lib/net/httpmessage');
+const exit = require('../../lib/cli/exit');
+const request = require('../../lib/net/request');
+const zipfolder = require('../../lib/fs/zipfolder');
+const tmpdir = require('../../lib/fs/tmpdir');
+const HttpMessage = require('../../lib/net/httpmessage');
 
 module.exports = function(config, workflowDir) {
   var zipPath = tmpdir(generateZipName(workflowDir));
