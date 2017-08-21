@@ -1,7 +1,8 @@
 const resolve = require('../lib/net/resolve');
+const fs = require('fs');
 const path = require('path');
 const exit = require('../lib/cli/exit');
-const fileupload = require('../lib/net/fileupload');
+const request = require('../lib/net/request');
 const zipfolder = require('../lib/fs/zipfolder');
 const tmpdir = require('../lib/fs/tmpdir');
 const HttpMessage = require('../lib/net/httpmessage');
@@ -9,12 +10,32 @@ const HttpMessage = require('../lib/net/httpmessage');
 module.exports = function(config, workflowDir) {
   var zipPath = tmpdir(generateZipName(workflowDir));
 
+  var workflowName = path.basename(workflowDir);
+  var pkgPath = path.resolve(workflowDir, 'package.json');
+  if (fs.existsSync(pkgPath)) {
+    workflowName = require(pkgPath).name;
+  }
+
   zipfolder(path.resolve(config.cwd, workflowDir), zipPath, (error, zip) => {
     if (error) return exit(error);
 
-    return fileupload(HttpMessage.sign(resolve(config.host, '/api/admin/workflows/import'), config.token), zip.path, (error) => {
+    var content = JSON.stringify({
+      base64Content: fs.readFileSync(zip.path).toString('base64')
+    });
+
+    var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName));
+    message.method = 'POST';
+    message = config.token ? HttpMessage.sign(message, config.token) : message;
+    message.headers['Content-Type'] = 'application/json';
+    message.headers['Content-Length'] = content.length;
+
+    var req = request(message, (error) => {
       if (error) return exit(error);
     });
+
+    req.write(content);
+    req.end();
+    return req;
   });
 
   function generateZipName(workflowDir) {
