@@ -5,6 +5,7 @@ const exit = require('../../lib/cli/exit');
 const request = require('../../lib/net/request');
 const zipfolder = require('../../lib/fs/zipfolder');
 const tmpdir = require('../../lib/fs/tmpdir');
+const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 module.exports = function(config, workflowDir) {
@@ -32,7 +33,7 @@ module.exports = function(config, workflowDir) {
     var req = request(message, (error) => {
       if (error) return exit(error);
 
-      console.log('Workflow "' + workflowName + '" is uploaded');
+      console.log(i18n('Workflow "' + workflowName + '" is uploaded'));
     });
 
     req.write(content);

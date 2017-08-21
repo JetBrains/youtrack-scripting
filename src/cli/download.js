@@ -4,11 +4,12 @@ const resolve = require('../../lib/net/resolve');
 const tmpdir = require('../../lib/fs/tmpdir');
 const unzip = require('../../lib/fs/unzip');
 const request = require('../../lib/net/request');
+const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 function download(config, workflowName) {
   if (!workflowName) {
-    exit(new Error('Workflow name should be defined'));
+    exit(new Error(i18n('Workflow name should be defined')));
     return;
   }
 

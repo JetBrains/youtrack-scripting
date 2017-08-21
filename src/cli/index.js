@@ -1,3 +1,5 @@
+const i18n = require('../../lib/i18n/i18n');
+
 module.exports.run = function() {
   const args = require('../../lib/cli/parseargv')(process.argv);
   const config = {
@@ -29,9 +31,9 @@ module.exports.run = function() {
 
   function printHelp() {
     br();
-    printLine('list     --host [--token]     ', 'List of installed workflows');
-    printLine('download <workflow> [--output]', 'Download a workflow');
-    printLine('upload   <directory>          ', 'Upload workflow to the server');
+    printLine(i18n('list     --host [--token]     '), i18n('List of installed workflows'));
+    printLine(i18n('download <workflow> [--output]'), i18n('Download a workflow'));
+    printLine(i18n('upload   <directory>          '), i18n('Upload workflow to the server'));
     br();
 
     function br() {
@@ -48,7 +50,7 @@ module.exports.run = function() {
 
     required.forEach((param) => {
       if (args.hasOwnProperty(param)) return;
-      exit(new Error('Option "--' + param + '" is required'));
+      exit(new Error(i18n('Option "--' + param + '" is required')));
     });
 
     return fn();
