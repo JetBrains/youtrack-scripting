@@ -1,9 +1,6 @@
 {
   "parserOptions": {},
   "plugins": [],
-  "ecmaFeatures": {
-    "arrowFunctions": true
-  },
   "env": {
     "node": true,
     "es6": true
