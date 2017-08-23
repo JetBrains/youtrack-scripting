@@ -1,4 +1,7 @@
 sudo: false
 language: node_js
-before_script:
-  - npm run init
+node_js:
+  - "stable"
+script:
+  - npm run lint
+  - npm run test
