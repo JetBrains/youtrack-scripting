@@ -46,9 +46,9 @@ module.exports = function(config, workflowDir) {
         }
 
         if (isCreate) {
-          console.log(i18n('Workflow "' + workflowName + '" is created'));
+          console.log(i18n('Workflow "' + workflowName + '" created'));
         } else {
-          console.log(i18n('Workflow "' + workflowName + '" is uploaded'));
+          console.log(i18n('Workflow "' + workflowName + '" uploaded'));
         }
       });
 

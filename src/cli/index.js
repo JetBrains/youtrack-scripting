@@ -31,9 +31,9 @@ module.exports.run = function() {
 
   function printHelp() {
     br();
-    printLine(i18n('list     --host [--token]     '), i18n('List of installed workflows'));
+    printLine(i18n('list     --host [--token]     '), i18n('View a list of installed workflows'));
     printLine(i18n('download <workflow> [--output]'), i18n('Download a workflow'));
-    printLine(i18n('upload   <directory>          '), i18n('Upload workflow to the server'));
+    printLine(i18n('upload   <directory>          '), i18n('Upload workflow to server'));
     br();
 
     function br() {
