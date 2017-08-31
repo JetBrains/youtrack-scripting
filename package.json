@@ -7,7 +7,7 @@
     "youtrack-workflow": "./bin/youtrack-workflow"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "archiver": "2.0.0",
     "minimist": "1.2.0",
