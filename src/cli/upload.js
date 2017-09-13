@@ -30,7 +30,7 @@ module.exports = function(config, workflowDir) {
         base64Content: fs.readFileSync(zip.path).toString('base64')
       });
 
-      var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : workflowName)));
+      var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
       message.method = 'POST';
       message = config.token ? HttpMessage.sign(message, config.token) : message;
       message.headers['Content-Type'] = 'application/json';
