@@ -9,6 +9,11 @@ const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 module.exports = function(config, workflowDir) {
+  if (!workflowDir) {
+    exit(new Error(i18n('Workflow directory should be defined')));
+    return;
+  }
+
   var zipPath = tmpdir(generateZipName(workflowDir));
 
   var workflowName = path.basename(workflowDir);
