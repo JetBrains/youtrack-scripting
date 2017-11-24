@@ -33,7 +33,7 @@ token | A permanent token that grants access to the YouTrack service. You can ge
 
 ### Download
 
-`youtrack-workflow download -- <workflowName> --host --token [--output]`
+`youtrack-workflow download <workflowName> --host --token [--output]`
 
 This command downloads the referenced workflow from your YouTrack installation. 
 
@@ -43,7 +43,7 @@ Here, you also need to specify values for the `--host` and `--token` parameters 
 
 ### Upload
 
-`youtrack-workflow upload -- <dir> --host --token`
+`youtrack-workflow upload <dir> --host --token`
 
 This command uploads the workflow from the specified directory to your YouTrack installation. First, the script checks the reference directory for a `package.json` file that contains the name of the workflow. If the file is not present or does not specify the workflow name, the name of the directory is used as the name of the uploaded workflow.
 
