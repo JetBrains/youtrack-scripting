@@ -12,7 +12,7 @@ function download(config, workflowName) {
     exit(new Error(i18n('Workflow name should be defined')));
     return;
   }
-
+  workflowName = workflowName.toString();
   var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName.replace(/^@/, '')));
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.headers['Accept'] = 'application/zip';
@@ -23,11 +23,11 @@ function download(config, workflowName) {
     }
   );
 
-  req.on('response', reponse => {
+  req.on('response', response => {
     const zip = fs.createWriteStream(tmpdir(getZipName(workflowName)));
     const output = config.output || config.cwd;
 
-    reponse.pipe(zip).on('close', () => {
+    response.pipe(zip).on('close', () => {
       unzip(zip.path, require('path').resolve(output, workflowName), (error) => {
         if (error) return exit(error);
 
