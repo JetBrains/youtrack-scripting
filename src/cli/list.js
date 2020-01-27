@@ -9,6 +9,7 @@ module.exports = function(config) {
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.query = message.query || {};
   message.query.fields = queryfields(['id', 'name']);
+  message.query.$top = '-1';
 
   return request(message, (error, data) => {
     if (error) return exit(error);
