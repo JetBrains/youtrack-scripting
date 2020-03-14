@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "archiver": "2.0.0",
-    "minimist": "1.2.0",
+    "minimist": "1.2.2",
     "unzipper": "0.10.0"
   },
   "scripts": {
