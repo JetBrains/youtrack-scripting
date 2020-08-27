@@ -2,6 +2,10 @@
   "name": "@jetbrains/youtrack-scripting",
   "version": "0.0.24",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JetBrains/youtrack-scripting.git"
+  },
   "main": "src/cli/index.js",
   "bin": {
     "youtrack-workflow": "./bin/youtrack-workflow"
