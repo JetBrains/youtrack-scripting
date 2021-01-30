@@ -1,0 +1,19 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: node
+        run: echo "##[set-output name=versoin;]$(cat .nvmrc)"
+        id: node
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "${{ steps.node.outputs.version }}"
+      - name: Run tests
+        run: |
+          npm ci
+          npm test
