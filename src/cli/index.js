@@ -1,7 +1,7 @@
 const i18n = require('../../lib/i18n/i18n');
 
-module.exports.run = function() {
-  const args = require('../../lib/cli/parseargv')(process.argv);
+module.exports.run = function(argv = process.argv) {
+  const args = require('../../lib/cli/parseargv')(argv);
   const config = {
     host: args.host || null,
     token: args.token || null,
