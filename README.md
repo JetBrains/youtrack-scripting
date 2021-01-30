@@ -1,6 +1,6 @@
 # youtrack-scripting
 
-[![Build Status](https://img.shields.io/travis/JetBrains/youtrack-scripting/master.svg?style=flat-square)](https://travis-ci.org/JetBrains/youtrack-scripting)
+![Test](https://github.com/JetBrains/youtrack-scripting/workflows/Test/badge.svg)
 [![official JetBrains project](http://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
 The **@jetbrains/youtrack-scripting** package contains utilities that help you manage YouTrack workflows when you work in an external code editor. This lets you write and update workflows for YouTrack in JavaScript in your preferred development environment.
