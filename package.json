@@ -20,6 +20,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha lib/**/*.test.js",
+    "release": "npm version patch -m 'bump: version to %s' && git push && git push --tags",
     "bin": "./bin/youtrack-workflow"
   },
   "devDependencies": {
