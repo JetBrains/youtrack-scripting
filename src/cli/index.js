@@ -48,10 +48,10 @@ module.exports.run = function(argv = process.argv) {
   function checkRequiredParams(required, args, fn) {
     var exit = require('../../lib/cli/exit');
 
-    required.forEach((param) => {
-      if (args.hasOwnProperty(param)) return;
-      exit(new Error(i18n('Option "--' + param + '" is required')));
-    });
+    if (required.some((param) => {
+      if (args.hasOwnProperty(param) && args[param]) return;
+      return exit(new Error(i18n('Option "--' + param + '" is required')));
+    })) return;
 
     return fn();
   }
