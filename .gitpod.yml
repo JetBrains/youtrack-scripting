@@ -1,2 +1,2 @@
 tasks:
-  - init: npm ci
+  - init: nvm install && nvm use && npm ci
