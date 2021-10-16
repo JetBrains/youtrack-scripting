@@ -20,13 +20,21 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jasmine",
+    "test:type": "tsc",
     "release": "npm version patch -m 'bump: version to %s' && git push && git push --tags",
     "bin": "./bin/youtrack-workflow"
   },
   "devDependencies": {
-    "eslint": "^8.0.1",
+    "@types/archiver": "2.0.0",
+    "@types/minimist": "1.2.2",
+    "@types/unzipper": "0.10.0",
+    "@types/jasmine": "3.6.4",
+    "@types/mock-fs": "3.6.30",
+    "@types/nock": "8.0.33",
+    "eslint": "8.0.1",
     "jasmine": "3.6.4",
     "mock-fs": "3.11.0",
-    "nock": "8.0.0"
+    "nock": "8.0.0",
+    "typescript": "4.4.4"
   }
 }

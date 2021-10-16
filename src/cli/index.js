@@ -40,11 +40,21 @@ module.exports.run = function(argv = process.argv) {
       console.log('');
     }
 
+    /**
+     * @param {string} option 
+     * @param {string} description 
+     */
     function printLine(option, description) {
       console.log('    ' + option + '   ' + description);
     }
   }
 
+  /**
+   * @param {string[]} required 
+   * @param {Object<string,*>} args 
+   * @param {*} fn 
+   * @returns {void}
+   */
   function checkRequiredParams(required, args, fn) {
     var exit = require('../../lib/cli/exit');
 

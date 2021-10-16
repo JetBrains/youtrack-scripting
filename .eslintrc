@@ -37,11 +37,7 @@
     "no-unreachable": 2,
     "no-extra-boolean-cast": 2,
     "comma-dangle": [2, "never"],
-    "valid-jsdoc": [2, {
-        "requireReturn": false,
-        "requireParamDescription": false,
-        "requireReturnDescription": false
-    }],
+    "valid-jsdoc": 0,
 
     "no-lonely-if": 2,
     "no-bitwise": 2,

@@ -4,8 +4,12 @@ const request = require('../../lib/net/request');
 const queryfields = require('../../lib/net/queryfields');
 const HttpMessage = require('../../lib/net/httpmessage');
 
+/**
+ * @param {*} config 
+ * @returns {*}
+ */
 module.exports = function(config) {
-  var message = new HttpMessage(resolve(config.host, '/api/admin/workflows'));
+  var message = HttpMessage(resolve(config.host, '/api/admin/workflows'));
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.query = message.query || {};
   message.query.fields = queryfields(['id', 'name']);
@@ -14,12 +18,12 @@ module.exports = function(config) {
   return request(message, (error, data) => {
     if (error) return exit(error);
 
-    data.forEach((x) => {
+    data.forEach((/**@type {*}*/x) => {
       print(x.name);
     });
   });
 
-  function print() {
-    console.log.apply(console, arguments);
+  function print(/**@type {string}*/name) {
+    console.log(name);
   }
 };

@@ -8,6 +8,11 @@ const tmpdir = require('../../lib/fs/tmpdir');
 const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
+/**
+ * @param {*} config 
+ * @param {string} workflowDir 
+ * @returns 
+ */
 module.exports = function(config, workflowDir) {
   if (!workflowDir) {
     exit(new Error(i18n('Workflow directory should be defined')));
@@ -29,17 +34,21 @@ module.exports = function(config, workflowDir) {
 
     return updateWorkflow();
 
+    /**
+     * @param {boolean} [isCreate]
+     * @returns {import('http').ClientRequest}
+     */
     function updateWorkflow(isCreate) {
       var content = JSON.stringify({
         name: isCreate ? workflowName : undefined,
         base64Content: fs.readFileSync(zip.path).toString('base64')
       });
 
-      var message = new HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
+      var message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
       message.method = 'POST';
       message = config.token ? HttpMessage.sign(message, config.token) : message;
       message.headers['Content-Type'] = 'application/json';
-      message.headers['Content-Length'] = content.length;
+      message.headers['Content-Length'] = String(content.length);
 
       var req = request(message, (error) => {
         if (error && error.statusCode === 404 && !isCreate) { // Try create new workflow
@@ -63,6 +72,10 @@ module.exports = function(config, workflowDir) {
     }
   });
 
+  /**
+   * @param {string} workflowDir 
+   * @returns {string}
+   */
   function generateZipName(workflowDir) {
     return 'youtrack-workflow-' + path.basename(workflowDir) + '.zip';
   }
