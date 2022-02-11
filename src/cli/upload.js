@@ -22,9 +22,14 @@ module.exports = function(config, workflowDir) {
   var zipPath = tmpdir(generateZipName(workflowDir));
 
   var workflowName = path.basename(workflowDir);
-  var pkgPath = path.resolve(workflowDir, 'package.json');
+  var pkgPath = path.resolve(workflowDir, 'manifest.json');
   if (fs.existsSync(pkgPath)) {
     workflowName = require(pkgPath).name;
+  } else {
+    var obsoletePkgPath = path.resolve(workflowDir, 'package.json');
+    if (fs.existsSync(obsoletePkgPath)) {
+      workflowName = require(obsoletePkgPath).name;
+    }
   }
 
   zipfolder(path.resolve(config.cwd, workflowDir), zipPath, (error, zip) => {
