@@ -25,7 +25,7 @@ jobs:
         run: |
           npm ci
           npm run lint
-          npm test:type
+          npm run test:type
           npm test
           echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           npm publish --access public
