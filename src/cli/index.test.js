@@ -17,7 +17,7 @@ describe('index', function() {
   });
 
   it('should show error message if required parameter doesn`t have value', function() {
-    spyOn(console, 'error').and.callThrough();
+    spyOn(console, 'error');
     spyOn(process, 'exit');
     require('./index').run(['', '', 'list', '--host=']);
     expect(console.error).toHaveBeenCalledWith('Error: Option "--host" is required');
