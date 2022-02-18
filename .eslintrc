@@ -3,18 +3,8 @@
   "plugins": [],
   "env": {
     "node": true,
-    "es2020": true
-  },
-  "globals": {
-    "it": false,
-    "describe": false,
-    "beforeAll": false,
-    "afterAll": false,
-    "expect": false,
-    "spyOn": false,
-    "jest": false,
-    "beforeEach": false,
-    "afterEach": false
+    "es2020": true,
+    "jest": true
   },
   "rules": {
     "no-spaced-func": 2,
