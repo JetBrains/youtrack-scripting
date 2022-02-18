@@ -12,7 +12,7 @@
     "afterAll": false,
     "expect": false,
     "spyOn": false,
-    "jasmine": false,
+    "jest": false,
     "beforeEach": false,
     "afterEach": false
   },
