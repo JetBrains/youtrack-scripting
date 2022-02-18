@@ -30,7 +30,7 @@ describe('index', function() {
     jest.spyOn(console, 'error').mockImplementation(() => {});
     jest.spyOn(process, 'exit').mockImplementation();
 
-    nock('http://foo:80')
+    nock('https://foo:443')
       .get((uri) => uri.includes('/api/admin/workflows'))
       .reply(200, []);
 
