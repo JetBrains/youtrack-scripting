@@ -9,7 +9,7 @@ const HttpMessage = require('../../lib/net/httpmessage');
  * @returns {*}
  */
 module.exports = function(config) {
-  var message = HttpMessage(resolve(config.host, '/api/admin/workflows'));
+  let message = HttpMessage(resolve(config.host, '/api/admin/workflows'));
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.query = message.query || {};
   message.query.fields = queryfields(['id', 'name']);

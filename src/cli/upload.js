@@ -19,14 +19,14 @@ module.exports = function(config, workflowDir) {
     return;
   }
 
-  var zipPath = tmpdir(generateZipName(workflowDir));
+  const zipPath = tmpdir(generateZipName(workflowDir));
 
-  var workflowName = path.basename(workflowDir);
-  var pkgPath = path.resolve(workflowDir, 'manifest.json');
+  let workflowName = path.basename(workflowDir);
+  const pkgPath = path.resolve(workflowDir, 'manifest.json');
   if (fs.existsSync(pkgPath)) {
     workflowName = require(pkgPath).name;
   } else {
-    var obsoletePkgPath = path.resolve(workflowDir, 'package.json');
+    const obsoletePkgPath = path.resolve(workflowDir, 'package.json');
     if (fs.existsSync(obsoletePkgPath)) {
       workflowName = require(obsoletePkgPath).name;
     }
@@ -44,18 +44,18 @@ module.exports = function(config, workflowDir) {
      * @returns {import('http').ClientRequest}
      */
     function updateWorkflow(isCreate) {
-      var content = JSON.stringify({
+      const content = JSON.stringify({
         name: isCreate ? workflowName : undefined,
         base64Content: fs.readFileSync(zip.path).toString('base64')
       });
 
-      var message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
+      let message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
       message.method = 'POST';
       message = config.token ? HttpMessage.sign(message, config.token) : message;
       message.headers['Content-Type'] = 'application/json';
       message.headers['Content-Length'] = String(content.length);
 
-      var req = request(message, (error) => {
+      const req = request(message, (error) => {
         if (error && error.statusCode === 404 && !isCreate) { // Try create new workflow
           return updateWorkflow(true);
         }

@@ -56,7 +56,7 @@ module.exports.run = function(argv = process.argv) {
    * @returns {void}
    */
   function checkRequiredParams(required, args, fn) {
-    var exit = require('../../lib/cli/exit');
+    const exit = require('../../lib/cli/exit');
 
     if (required.some((param) => {
       if (args.hasOwnProperty(param) && args[param]) return;

@@ -18,7 +18,7 @@ function download(config, workflowName) {
     return;
   }
   workflowName = workflowName.toString();
-  var message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName.replace(/^@/, '')));
+  let message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName.replace(/^@/, '')));
   message = config.token ? HttpMessage.sign(message, config.token) : message;
   message.headers['Accept'] = 'application/zip';
 
