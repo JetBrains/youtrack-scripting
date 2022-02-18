@@ -58,12 +58,22 @@ module.exports.run = function(argv = process.argv) {
   function checkRequiredParams(required, args, fn) {
     const exit = require('../../lib/cli/exit');
 
-    if (required.some((param) => {
-      if (args.hasOwnProperty(param) && args[param]) return;
-      return exit(new Error(i18n('Option "--' + param + '" is required')));
-    })) return;
+    /**
+     * @param {string[]} params
+     * @param {Object<string,*>} args
+     * @returns {Boolean}
+     */
+    function allParamsProvided(params, args) {
+      return params.every(param => {
+        if (!args.hasOwnProperty(param) || !args[param]) {
+          exit(new Error(i18n('Option "--' + param + '" is required')));
+          return false;
+        }
+        return true;
+      });
+    }
 
-    return fn();
+    if (allParamsProvided(required,args)) fn();
   }
 
   function printVersion() {
