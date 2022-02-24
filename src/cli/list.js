@@ -5,17 +5,16 @@ const queryfields = require('../../lib/net/queryfields');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 /**
- * @param {*} config 
+ * @param {*} config
  * @returns {*}
  */
 module.exports = function(config) {
   let message = HttpMessage(resolve(config.host, '/api/admin/workflows'));
-  message = config.token ? HttpMessage.sign(message, config.token) : message;
-  message.query = message.query || {};
-  message.query.fields = queryfields(['id', 'name']);
-  message.query.$top = '-1';
+  const options = config.token ? HttpMessage.sign(config.token) : {};
+  message.searchParams.append('fields',queryfields(['id', 'name']));
+  message.searchParams.append('$top','-1');
 
-  return request(message, (error, data) => {
+  return request(message, options, (error, data) => {
     if (error) return exit(error);
 
     data.forEach((/**@type {*}*/x) => {

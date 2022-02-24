@@ -50,12 +50,20 @@ module.exports = function(config, workflowDir) {
       });
 
       let message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + (isCreate ? '' : encodeURIComponent(workflowName))));
-      message.method = 'POST';
-      message = config.token ? HttpMessage.sign(message, config.token) : message;
-      message.headers['Content-Type'] = 'application/json';
-      message.headers['Content-Length'] = String(content.length);
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': String(content.length)
+        }
+      };
 
-      const req = request(message, (error) => {
+      if (config.token) {
+        const signHeaders = HttpMessage.sign(config.token);
+        options.headers = {...options.headers,...signHeaders.headers};
+      }
+
+      const req = request(message, options, (error) => {
         if (error && error.statusCode === 404 && !isCreate) { // Try create new workflow
           return updateWorkflow(true);
         }

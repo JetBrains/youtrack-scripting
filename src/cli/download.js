@@ -19,10 +19,18 @@ function download(config, workflowName) {
   }
   workflowName = workflowName.toString();
   let message = HttpMessage(resolve(config.host, '/api/admin/workflows/' + workflowName.replace(/^@/, '')));
-  message = config.token ? HttpMessage.sign(message, config.token) : message;
-  message.headers['Accept'] = 'application/zip';
+  const options = {
+    headers: {
+      'Accept': 'application/zip'
+    }
+  };
 
-  const req = request(message,
+  if (config.token) {
+    const signHeaders = HttpMessage.sign(config.token);
+    options.headers = {...options.headers,...signHeaders.headers};
+  }
+
+  const req = request(message,options,
     (downloadError) => {
       if (downloadError) exit(downloadError);
     }
