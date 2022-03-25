@@ -15,7 +15,7 @@
   "dependencies": {
     "archiver": "2.0.0",
     "follow-redirects": "^1.14.9",
-    "minimist": "1.2.3",
+    "minimist": "1.2.6",
     "unzipper": "0.10.0"
   },
   "scripts": {
