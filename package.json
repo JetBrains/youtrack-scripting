@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/archiver": "2.0.0",
-    "@types/follow-redirects": "^1.14.1",
+    "@types/follow-redirects": "^1.15.0",
     "@types/jest": "^27.4.0",
     "@types/minimist": "1.2.2",
     "@types/mock-fs": "3.6.30",
