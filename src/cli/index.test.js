@@ -4,7 +4,8 @@ nock.back.setMode('record');
 describe('index', function() {
   beforeEach(function() {
     nock.disableNetConnect();
-    jest.spyOn(console, 'log').mockImplementation(() => {});
+    jest.spyOn(console, 'log').mockImplementation(() => {
+    });
   });
 
   afterEach(() => {
@@ -18,7 +19,8 @@ describe('index', function() {
   });
 
   it('should show error message if required parameter doesn`t have value', function() {
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {
+    });
     jest.spyOn(process, 'exit').mockImplementation();
 
     require('./index').run(['', '', 'list', '--host=']);
@@ -27,7 +29,8 @@ describe('index', function() {
   });
 
   it('should not throw error if user passed all required parameters', function() {
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {
+    });
     jest.spyOn(process, 'exit').mockImplementation();
 
     nock('https://foo:443')

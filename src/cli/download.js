@@ -8,9 +8,9 @@ const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 /**
- * @param {*} config 
- * @param {string} workflowName 
- * @returns 
+ * @param {*} config
+ * @param {string} workflowName
+ * @returns
  */
 function download(config, workflowName) {
   if (!workflowName) {
@@ -27,10 +27,10 @@ function download(config, workflowName) {
 
   if (config.token) {
     const signHeaders = HttpMessage.sign(config.token);
-    options.headers = {...options.headers,...signHeaders.headers};
+    options.headers = {...options.headers, ...signHeaders.headers};
   }
 
-  const req = request(message,options,
+  const req = request(message, options,
     (downloadError) => {
       if (downloadError) exit(downloadError);
     }
@@ -52,7 +52,7 @@ function download(config, workflowName) {
   return req;
 
   /**
-   * @param {string} workflowName 
+   * @param {string} workflowName
    * @returns {string}
    */
   function getZipName(workflowName) {

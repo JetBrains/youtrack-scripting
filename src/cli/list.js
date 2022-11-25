@@ -11,8 +11,8 @@ const HttpMessage = require('../../lib/net/httpmessage');
 module.exports = function(config) {
   let message = HttpMessage(resolve(config.host, '/api/admin/workflows'));
   const options = config.token ? HttpMessage.sign(config.token) : {};
-  message.searchParams.append('fields',queryfields(['id', 'name']));
-  message.searchParams.append('$top','-1');
+  message.searchParams.append('fields', queryfields(['id', 'name']));
+  message.searchParams.append('$top', '-1');
 
   return request(message, options, (error, data) => {
     if (error) return exit(error);

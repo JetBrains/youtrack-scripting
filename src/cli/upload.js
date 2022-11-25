@@ -60,7 +60,7 @@ module.exports = function(config, workflowDir) {
 
       if (config.token) {
         const signHeaders = HttpMessage.sign(config.token);
-        options.headers = {...options.headers,...signHeaders.headers};
+        options.headers = {...options.headers, ...signHeaders.headers};
       }
 
       const req = request(message, options, (error) => {

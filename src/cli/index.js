@@ -41,8 +41,8 @@ module.exports.run = function(argv = process.argv) {
     }
 
     /**
-     * @param {string} option 
-     * @param {string} description 
+     * @param {string} option
+     * @param {string} description
      */
     function printLine(option, description) {
       console.log('    ' + option + '   ' + description);
@@ -50,9 +50,9 @@ module.exports.run = function(argv = process.argv) {
   }
 
   /**
-   * @param {string[]} required 
-   * @param {Object<string,*>} args 
-   * @param {*} fn 
+   * @param {string[]} required
+   * @param {Object<string,*>} args
+   * @param {*} fn
    * @returns {void}
    */
   function checkRequiredParams(required, args, fn) {
@@ -73,7 +73,7 @@ module.exports.run = function(argv = process.argv) {
       });
     }
 
-    if (allParamsProvided(required,args)) fn();
+    if (allParamsProvided(required, args)) fn();
   }
 
   function printVersion() {
