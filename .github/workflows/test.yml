@@ -7,12 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: node
-        run: echo "##[name=version;]$(cat .nvmrc)" >> $GITHUB_OUTPUT
-        id: node
       - uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.node.outputs.version }}"
+          node-version: 16
       - name: Run tests
         run: |
           npm ci

@@ -9,18 +9,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: tag
-        id: tag
-        run: echo "##[name=name;]${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ steps.tag.outputs.name }}
-      - name: node
-        run: echo "##[name=version;]$(cat .nvmrc)" >> $GITHUB_OUTPUT
-        id: node
       - uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.node.outputs.version }}"
+          node-version: 16
           registry-url: 'https://registry.npmjs.org'
       - name: Publish
         run: |
