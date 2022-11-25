@@ -26,10 +26,10 @@ The package includes scripts that let you synchronize local changes with your Yo
 
 This command lists all of the workflows that are available in your YouTrack installation. To use this command, specify the following parameters:
 
-Parameter | Description
---- | :---
-host | The base URL of your YouTrack installation. For an InCloud instance, include the trailing `/youtrack`.
-token | A permanent token that grants access to the YouTrack service. You can generate your own permanent tokens to authenticate with YouTrack on the **Authentication** tab of your Hub profile.
+| Parameter | Description                                                                                                                                                                               |
+|-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| host      | The base URL of your YouTrack installation. For an InCloud instance, include the trailing `/youtrack`.                                                                                    |
+| token     | A permanent token that grants access to the YouTrack service. You can generate your own permanent tokens to authenticate with YouTrack on the **Authentication** tab of your Hub profile. |
 
 ### Download
 
