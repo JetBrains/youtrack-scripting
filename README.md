@@ -24,7 +24,7 @@ The package includes scripts that let you synchronize local changes with your Yo
 
 `youtrack-workflow list --host --token`
 
-This command lists all of the workflows that are available in your YouTrack installation. To use this command, specify the following parameters:
+This command lists all the workflows that are available in your YouTrack installation. To use this command, specify the following parameters:
 
 | Parameter | Description                                                                                                                                                                               |
 |-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -49,7 +49,7 @@ This command uploads the workflow from the specified directory to your YouTrack 
 
 Specify values for the `--host` and `--token` parameters to gain authorized access to YouTrack.
 
-### Special Instructions for SSL Cerfiticates
+### Special Instructions for SSL Certificates
 
 If your YouTrack domain uses an SSL certificate that is issued by a known certificate authority, you can establish a connection using just your personal permanent token. Your certificate is already included in CA certificate store that is built into Node.js. For certificates that are issued by a CA that is not recognized automatically or is self-signed, you need to modify the environment variables in Node.js to recognize or ignore your certificate.
 

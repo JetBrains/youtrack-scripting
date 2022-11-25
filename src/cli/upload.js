@@ -9,9 +9,9 @@ const i18n = require('../../lib/i18n/i18n');
 const HttpMessage = require('../../lib/net/httpmessage');
 
 /**
- * @param {*} config 
- * @param {string} workflowDir 
- * @returns 
+ * @param {*} config
+ * @param {string} workflowDir
+ * @returns
  */
 module.exports = function(config, workflowDir) {
   if (!workflowDir) {
@@ -64,7 +64,7 @@ module.exports = function(config, workflowDir) {
       }
 
       const req = request(message, options, (error) => {
-        if (error && error.statusCode === 404 && !isCreate) { // Try create new workflow
+        if (error && error.statusCode === 404 && !isCreate) { // Try to create new workflow
           return updateWorkflow(true);
         }
 
@@ -86,7 +86,7 @@ module.exports = function(config, workflowDir) {
   });
 
   /**
-   * @param {string} workflowDir 
+   * @param {string} workflowDir
    * @returns {string}
    */
   function generateZipName(workflowDir) {
