@@ -21,13 +21,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "${{ steps.node.outputs.version }}"
+          registry-url: 'https://registry.npmjs.org'
       - name: Publish
         run: |
           npm ci
           npm run lint
           npm run test:type
           npm test
-          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           npm publish --access public
         env:
           NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
