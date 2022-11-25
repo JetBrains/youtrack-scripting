@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: tag
         id: tag
-        run: echo "##[set-output name=name;]${GITHUB_REF/refs\/tags\//}"
+        run: echo "##[name=name;]${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v2
         with:
           ref: ${{ steps.tag.outputs.name }}
       - name: node
-        run: echo "##[set-output name=versoin;]$(cat .nvmrc)"
+        run: echo "##[name=version;]$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: node
       - uses: actions/setup-node@v2
         with:
