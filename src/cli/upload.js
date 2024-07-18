@@ -47,7 +47,7 @@ module.exports = function(config, workflowDir) {
       const form = new FormData();
       form.append('file', fs.createReadStream(zip.path), {filename:workflowName + '.zip'});
 
-      let message = HttpMessage(resolve(config.host, '/api/admin/workflows/import' + (isCreate ? '' : encodeURIComponent(workflowName))));
+      let message = HttpMessage(resolve(config.host, '/api/admin/workflows/import'));
       const options = {
         method: 'POST',
         headers: form.getHeaders()
